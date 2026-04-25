@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package format="1" type="workbench">
   <name>YS-Grid</name>
-  <description>Global CAD-style overlay grid for FreeCAD</description>
+  <description>Global CAD overlay grid system</description>
   <version>1.0.0</version>
   <maintainer>Yasin</maintainer>
   <license>MIT</license>
-  <url type="repository">https://github.com/YasinSan/YS_Grid</url>
+  <url type="repository">https://github.com/YasinSan/YS-Grid</url>
 
   <tags>
     <tag>grid</tag>
     <tag>overlay</tag>
-    <tag>ui</tag>
+    <tag>cad</tag>
   </tags>
 </package>

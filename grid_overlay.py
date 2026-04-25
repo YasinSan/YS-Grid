@@ -28,33 +28,40 @@ class GridOverlay:
     def build(self):
         self.root.removeAllChildren()
 
-        w = 200
-        h = 200
+        size = 200
+        step = 1
+        major = 10
 
-        minor = (0.41, 0.40, 0.45)   # #696773
-        major = (0.93, 0.94, 0.95)   # #EFF1F3
-        xcol  = (1, 0, 0)
-        ycol  = (0, 1, 0)
+        minor = (0.41, 0.40, 0.45)
+        major_c = (0.93, 0.94, 0.95)
+        x_axis = (1, 0, 0)
+        y_axis = (0, 1, 0)
 
-        for x in range(-100, 101):
+        x = -size // 2
+        while x <= size // 2:
+
             if x == 0:
-                color = ycol
-            elif x % 10 == 0:
-                color = major
+                color = y_axis
+            elif x % major == 0:
+                color = major_c
             else:
                 color = minor
 
-            self.root.addChild(self.line((x, -100, 0), (x, 100, 0), color))
+            self.root.addChild(self.line((x, -size/2, 0), (x, size/2, 0), color))
+            x += step
 
-        for y in range(-100, 101):
+        y = -size // 2
+        while y <= size // 2:
+
             if y == 0:
-                color = xcol
-            elif y % 10 == 0:
-                color = major
+                color = x_axis
+            elif y % major == 0:
+                color = major_c
             else:
                 color = minor
 
-            self.root.addChild(self.line((-100, y, 0), (100, y, 0), color))
+            self.root.addChild(self.line((-size/2, y, 0), (size/2, y, 0), color))
+            y += step
 
     def show(self):
         if not self.visible:
@@ -66,4 +73,5 @@ class GridOverlay:
             Gui.ActiveDocument.ActiveView.getSceneGraph().removeChild(self.root)
             self.visible = False
 
-grid_overlay = GridOverlay()
+
+grid = GridOverlay()

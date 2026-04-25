@@ -1,16 +1,15 @@
 import FreeCAD as App
-from .grid_overlay import grid_overlay
+App.Console.PrintMessage("\n[YS-Grid] Init.py LOADED\n")
+from .grid_overlay import grid
 
 def on_startup():
-    # Load saved state
     p = App.ParamGet("User parameter:BaseApp/Preferences/YSGrid")
-    auto_show = p.GetBool("AutoShow", True)
+    auto = p.GetBool("AutoShow", True)
 
-    if auto_show:
+    if auto:
         try:
-            grid_overlay.show()
-        except Exception as e:
-            print("[YS-Grid] Startup error:", e)
+            grid.show()
+        except:
+            pass
 
-# register startup hook
 App.addStartCallback(on_startup)
