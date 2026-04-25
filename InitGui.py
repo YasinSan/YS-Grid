@@ -1,17 +1,17 @@
-import FreeCAD as App
-App.Console.PrintMessage("\n[YS-Grid] InitGui.py LOADED\n")
+import FreeCADGui as Gui
 from .command import ToggleGrid
 
-class YSGridWorkbench(Gui.Workbench):
-    MenuText = "YS-Grid"
-    ToolTip = "Overlay grid system"
+class ToggleGridCommand:
+    def GetResources(self):
+        return {
+            "MenuText": "YS Grid Toggle",
+            "ToolTip": "Toggle overlay grid"
+        }
 
-    def Initialize(self):
-        Gui.addCommand("YSGridToggle", ToggleGrid())
-
-        self.appendToolbar("YS-Grid", ["YSGridToggle"])
+    def IsActive(self):
+        return True
 
     def Activated(self):
-        pass
+        ToggleGrid().Activated()
 
-Gui.addWorkbench(YSGridWorkbench())
+Gui.addCommand("YSGridToggle", ToggleGridCommand())
